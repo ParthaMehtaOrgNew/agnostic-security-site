@@ -9,6 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .qr-placeholder{width:220px;height:220px;margin:1.5rem auto;border-radius:12px;overflow:hidden;border:2px solid var(--border);}
+    .qr-placeholder img{width:100%;height:100%;object-fit:cover;}
+    .upi-id{font-family:'JetBrains Mono',monospace;font-size:0.95rem;background:var(--bg-card);border:1px solid var(--border);padding:0.75rem 1.25rem;border-radius:8px;text-align:center;margin:1rem auto;max-width:360px;user-select:all;}
+    .gpay-btn{display:inline-flex;align-items:center;gap:0.5rem;background:#1a73e8;color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:1rem;transition:background 0.2s;}
+    .gpay-btn:hover{background:#1557b0;}
+    .payment-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0;}
+    .payment-steps .step{text-align:center;padding:1.5rem;background:var(--bg-card);border-radius:12px;border:1px solid var(--border);}
+    .payment-steps .step-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;margin-bottom:0.75rem;}
+    .flash{padding:1rem 1.5rem;border-radius:8px;margin:1rem 0;font-weight:500;display:none;}
+    .flash.success{display:block;background:#dcfce7;color:#166534;border:1px solid #bbf7d0;}
+    .flash.error{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca;}
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -33,6 +46,7 @@
     <p>Open source core. Enterprise features for teams that need compliance.</p>
   </div>
 
+  <!-- Pricing Cards -->
   <section>
     <div class="container">
       <div class="pricing-grid">
@@ -69,7 +83,7 @@
             <li>Webhook alerting (Slack, Discord)</li>
             <li>Email support</li>
           </ul>
-          <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Contact Sales</a>
+          <a href="#payment" class="btn btn-primary" style="width:100%;justify-content:center;">Buy Pro</a>
         </div>
         <div class="pricing-card">
           <h3>Enterprise</h3>
@@ -93,6 +107,117 @@
     </div>
   </section>
 
+  <!-- Payment Section -->
+  <section class="bg-warm" id="payment">
+    <div class="container-narrow">
+      <div class="section-header center">
+        <span class="section-eyebrow"><span class="dot"></span> Payment</span>
+        <h2 class="section-title">Pay via GPay / UPI</h2>
+        <p class="section-sub">Scan the QR code or tap the button below to pay instantly via UPI.</p>
+      </div>
+
+      <div style="text-align:center;">
+        <div class="qr-placeholder">
+          <img src="upi-qr.png" alt="UPI QR Code">
+        </div>
+        <div class="upi-id">parthamehta10@okhdfcbank</div>
+        <div style="margin:1.5rem 0;">
+          <a href="upi://pay?pa=parthamehta10@okhdfcbank&pn=AgnosticSecurity&am=2399&cu=INR&tn=AgnosticSecurity%20Pro" class="gpay-btn" id="gpay-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Pay with GPay
+          </a>
+        </div>
+      </div>
+
+      <div class="payment-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h4>Choose plan</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Select Pro or Enterprise above.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h4>Pay via UPI</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Scan QR or tap GPay button.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h4>Submit form</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">Enter your UPI transaction ID below.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h4>Get license</h4>
+          <p style="font-size:0.85rem;color:var(--text-secondary);">License key emailed within 24 hours.</p>
+        </div>
+      </div>
+
+      <!-- License Form -->
+      <div style="max-width:520px;margin:2rem auto;background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;padding:2rem;">
+        <h3 style="margin-bottom:1.5rem;text-align:center;">Activate License</h3>
+        <div id="flash-msg" class="flash"></div>
+        <form id="license-form">
+          <div class="form-group">
+            <label for="lic-email">Email</label>
+            <input type="email" id="lic-email" class="form-input" placeholder="you@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="lic-name">Full Name</label>
+            <input type="text" id="lic-name" class="form-input" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="lic-plan">Plan</label>
+            <select id="lic-plan" class="form-input" required>
+              <option value="pro-monthly" selected>Pro — $29/mo</option>
+              <option value="pro-annual">Pro — $290/year</option>
+              <option value="enterprise">Enterprise — Custom</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lic-txn">UPI Transaction ID</label>
+            <input type="text" id="lic-txn" class="form-input" placeholder="e.g. 412345678901" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Submit &amp; Activate</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Comparison -->
+  <section>
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-eyebrow"><span class="dot"></span> Plan Comparison</span>
+        <h2 class="section-title">What's included at every tier</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Community</th><th>Pro</th><th>Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>VS Code / Cursor extension</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Chrome extension</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>File access gate (2-layer DLP)</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Exec command guard</td><td>20+ patterns</td><td>20+ patterns + LLM</td><td>20+ patterns + LLM + custom</td></tr>
+            <tr><td>Prompt intent analysis</td><td>3 layers</td><td>4 layers (+ Ollama)</td><td>4 layers + custom rules</td></tr>
+            <tr><td>PII redaction</td><td>6 patterns</td><td><span class="badge-green">6 patterns</span></td><td>6 + custom patterns</td></tr>
+            <tr><td>Security Gateway</td><td>—</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>System prompt masking</td><td>—</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Media filtering</td><td>—</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Session encryption (AES-256-GCM)</td><td>—</td><td><span class="badge-green">Yes</span></td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Breach compliance engine</td><td>—</td><td>—</td><td><span class="badge-green">13 breach types</span></td></tr>
+            <tr><td>Taint tracking + egress allowlist</td><td>—</td><td>—</td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Multi-tenant isolation</td><td>—</td><td>—</td><td><span class="badge-green">Yes</span></td></tr>
+            <tr><td>Red-team eval suite</td><td>—</td><td>—</td><td><span class="badge-green">46 tests</span></td></tr>
+            <tr><td>Support</td><td>GitHub Issues</td><td>Email</td><td>Dedicated + SLA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
   <section class="bg-warm">
     <div class="container">
       <div class="section-header center">
@@ -110,7 +235,7 @@
         </div>
         <div class="card" style="margin-bottom: 1rem;">
           <h3>Can I use it with Cursor / Windsurf / Cody?</h3>
-          <p>Yes. The VS Code extension supports Copilot, Cursor, Windsurf, and Cody via .copilotignore, .cursorignore, and .aiignore. The DLP engine works with any tool that can call shell commands or HTTP APIs.</p>
+          <p>Yes. The VS Code extension supports Copilot, Cursor, Windsurf, and Cody via .copilotignore, .cursorignore, and .aiignore.</p>
         </div>
       </div>
     </div>
@@ -127,5 +252,29 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById('license-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var flash = document.getElementById('flash-msg');
+      var name = document.getElementById('lic-name').value;
+      if (!name || !document.getElementById('lic-email').value || !document.getElementById('lic-txn').value) {
+        flash.className = 'flash error';
+        flash.textContent = 'Please fill in all fields.';
+        return;
+      }
+      flash.className = 'flash success';
+      flash.textContent = 'Thank you, ' + name + '! We will verify your payment and email your license key within 24 hours.';
+      this.reset();
+    });
+
+    document.getElementById('lic-plan').addEventListener('change', function() {
+      var link = document.getElementById('gpay-link');
+      var amounts = {'pro-monthly':'2399','pro-annual':'23999','enterprise':'9999'};
+      var names = {'pro-monthly':'AgnosticSecurity%20Pro','pro-annual':'AgnosticSecurity%20Pro%20Annual','enterprise':'AgnosticSecurity%20Enterprise'};
+      var am = amounts[this.value] || '2399';
+      var tn = names[this.value] || 'AgnosticSecurity%20Pro';
+      link.href = 'upi://pay?pa=parthamehta10@okhdfcbank&pn=AgnosticSecurity&am=' + am + '&cu=INR&tn=' + tn;
+    });
+  </script>
 </body>
 </html>

@@ -9,6 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .social-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.85rem;color:var(--text-secondary);transition:all 0.2s;text-decoration:none;margin:0.25rem;}
+    .social-btn:hover{border-color:var(--border-hover);color:var(--text);background:var(--bg-elevated);}
+  </style>
 </head>
 <body>
   <nav class="nav">
@@ -36,25 +40,38 @@
   <section>
     <div class="container">
       <div class="grid-2">
+        <!-- Left column — contact info -->
         <div>
           <div class="card" style="margin-bottom: 1rem;">
-            <h3>GitHub</h3>
-            <p>Bug reports, feature requests, and discussions.</p>
-            <a href="https://github.com/kaushikdharamshi/AgnosticSecurity/issues" style="color: var(--accent); font-weight: 600; font-size: 0.9rem;">Open an Issue →</a>
+            <h3>Email</h3>
+            <p style="margin-top: 0.5rem;"><a href="mailto:parthamehta10@gmail.com" style="color:var(--accent);">parthamehta10@gmail.com</a> — Partha Mehta</p>
+            <p style="margin-top: 0.3rem;"><a href="mailto:kaushik.dharamshi@gmail.com" style="color:var(--accent);">kaushik.dharamshi@gmail.com</a> — Kaushik Dharamshi</p>
           </div>
+
           <div class="card" style="margin-bottom: 1rem;">
-            <h3>Enterprise Sales</h3>
-            <p>Custom deployments, compliance requirements, SLAs.</p>
-            <p style="color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem;">partha@agnosticsecurity.dev</p>
+            <h3>GitHub</h3>
+            <p style="margin-top: 0.5rem;">Bug reports, feature requests, and discussions.</p>
+            <p style="margin-top: 0.5rem;"><a href="https://github.com/kaushikdharamshi/AgnosticSecurity/issues" style="color: var(--accent); font-weight: 600;">Open an Issue →</a></p>
           </div>
-          <div class="card">
-            <h3 style="margin-bottom: 0.5rem;">Follow Us</h3>
-            <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
-              <a href="https://github.com/kaushikdharamshi" style="color: var(--text-secondary); font-size: 0.9rem;">GitHub</a>
-              <a href="https://linkedin.com/in/parthamehta" style="color: var(--text-secondary); font-size: 0.9rem;">LinkedIn</a>
+
+          <div class="card" style="margin-bottom: 1rem;">
+            <h3>Follow Us</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.75rem;">
+              <a href="https://github.com/parthamehta123" target="_blank" class="social-btn">🐙 Partha Mehta</a>
+              <a href="https://github.com/kaushikdharamshi" target="_blank" class="social-btn">🐙 Kaushik Dharamshi</a>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem;">
+              <a href="https://linkedin.com/in/parthamehta" target="_blank" class="social-btn">💼 Partha Mehta</a>
+              <a href="https://linkedin.com/in/kaushikdharamshi" target="_blank" class="social-btn">💼 Kaushik Dharamshi</a>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem;">
+              <a href="https://www.producthunt.com/@partha_mehta" target="_blank" class="social-btn">🚀 Partha Mehta</a>
+              <a href="https://www.producthunt.com/@kaushik_dharamshi" target="_blank" class="social-btn">🚀 Kaushik Dharamshi</a>
             </div>
           </div>
         </div>
+
+        <!-- Right column — contact form -->
         <div class="card">
           <h3 style="margin-bottom: 1.5rem;">Send us a message</h3>
           <form id="contact-form">
