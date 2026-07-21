@@ -477,7 +477,7 @@ SecureMind is the only player in the **local + actions** quadrant.
 | Audit entries analyzed | 18,250 |
 | Test suites (AgnosticSecurity) | 31 files |
 | Test suites (securityagent-core) | 50 files |
-| **Total tests** | **1,116** across 31 suites |
+| **Total tests** | **1,117** across 31 suites |
 | Core tests | 263 |
 | Gateway + enterprise tests | 101 (46 gateway DLP + 25 enterprise privacy + 30 FP/TP) |
 | RBAC + smart redaction tests | 95 |
