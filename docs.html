@@ -102,7 +102,7 @@
         <h4>Reference</h4>
         <a href="#env-vars">Environment Variables</a>
         <a href="#compliance">Compliance (OWASP/NIST)</a>
-        <a href="#architecture">Architecture (31 components)</a>
+        <a href="#architecture">Architecture (37 components)</a>
       </div>
     </aside>
 
@@ -159,7 +159,7 @@
         <h2>IDE <span class="accent">Integration</span></h2>
         <h3>VS Code Extension</h3>
         <div class="terminal"><div class="terminal-body" style="padding:0.8rem">
-          <span class="prompt">$</span> <span class="cmd">code --install-extension</span> agnostic-security-4.35.0.vsix<br>
+          <span class="prompt">$</span> <span class="cmd">code --install-extension</span> agnostic-security-4.36.0.vsix<br>
           <span class="success">&#10003;</span> <span class="output">Extension installed — status bar: "Data Protected from AI"</span>
         </div></div>
         <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-secondary,#8b949e)">Context boundary architecture: AI tools cannot read sensitive file content. Files remain visible in Explorer and fully editable by developers. 10 defense layers including .copilotignore, search.exclude, LM API interceptor, Terminal Guard v4.</p>
@@ -168,7 +168,7 @@
       <section id="cursor">
         <h3>Cursor / Windsurf / VSCodium</h3>
         <div class="terminal"><div class="terminal-body" style="padding:0.8rem">
-          <span class="prompt">$</span> <span class="cmd">cursor --install-extension</span> agnostic-security-4.35.0.vsix<br>
+          <span class="prompt">$</span> <span class="cmd">cursor --install-extension</span> agnostic-security-4.36.0.vsix<br>
           <span class="output">Or install from Open VSX marketplace</span>
         </div></div>
       </section>
@@ -385,7 +385,7 @@
         <h3>Test Suites (1,117)</h3>
         <div class="terminal"><div class="terminal-bar"><span class="terminal-dot r"></span><span class="terminal-dot y"></span><span class="terminal-dot g"></span></div>
         <div class="terminal-body">
-          <span class="output"># v4.35.0 — 1,117 tests across 31 suites</span><br>
+          <span class="output"># v4.36.0 — 1,117 tests across 31 suites</span><br>
           <span class="prompt">$</span> python3 scripts/test_privacy_mode.py <span class="success"># 28 PASS</span><br>
           <span class="prompt">$</span> python3 scripts/test_knowledge_graph.py <span class="success"># 33 PASS</span><br>
           <span class="prompt">$</span> python3 scripts/test_vuln_scanner.py <span class="success"># 45 PASS</span><br>
@@ -434,7 +434,7 @@
       </section>
 
       <section id="architecture">
-        <h3>Architecture (31 components)</h3>
+        <h3>Architecture (37 components)</h3>
         <p style="font-size:0.85rem;color:var(--text-secondary,#8b949e)">20 core components + 5 distribution channels. DLP Engine, API Gateway, LLM Proxy, Breach Engine, Block Rules, VS Code Extension, Chrome Extension, Auto-Instrumentation SDK, Privacy Mode, Knowledge Graph, Vulnerability Scanner, Code Fingerprint Guard, Shadow AI Detector, Security Memory Bridge, Smart Router, Admin Console, Red Team Agents, Ingress Guard, RBAC Middleware, Smart Redaction Engine. Distribution: CLI installer, pre-commit hooks, GitHub Action, admin dashboard, Docker.</p>
       </section>
 
@@ -444,7 +444,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div><div class="footer-brand"><span class="icon">🧠</span> SecureMind</div><p class="footer-desc">Enterprise DLP for AI coding agents — 31 components, intelligent routing, and 6 distribution channels.</p></div>
+        <div><div class="footer-brand"><span class="icon">🧠</span> SecureMind</div><p class="footer-desc">Enterprise DLP for AI coding agents — 37 components, intelligent routing, and 6 distribution channels.</p></div>
         <div><h4>Products</h4><a href="features.html" class="footer-link">Features</a><a href="pricing.html" class="footer-link">Pricing</a><a href="docs.html" class="footer-link">Docs</a><a href="https://github.com/secure-mind-live/agnostic-security-releases" target="_blank" class="footer-link">GitHub</a></div>
         <div><h4>Company</h4><a href="about.html" class="footer-link">About</a><a href="blog.html" class="footer-link">Blog</a><a href="contact.html" class="footer-link">Contact</a></div>
         <div><h4>Legal</h4><a href="#" class="footer-link">Privacy Policy</a><a href="#" class="footer-link">Terms of Service</a><a href="#" class="footer-link">Security</a></div>
